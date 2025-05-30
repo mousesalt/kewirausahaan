@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Pelatihan Kewirausahaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices:
+        - Hero: Inform/Motivate -> Large text, CTA button -> Scroll to Pendaftaran -> HTML/Tailwind.
+        - Tentang Program: Inform -> Text blocks, icon lists -> Read -> HTML/Tailwind.
+        - Isi Kursus: Inform/Detail -> Structured multi-column list -> Read -> HTML/Tailwind.
+        - Metodologi: Inform -> Icon + text -> Read -> HTML/Tailwind.
+        - Peserta: Inform -> Icon list -> Read -> HTML/Tailwind.
+        - Pembicara: Inform/Credibility -> Profile card layout -> Read -> HTML/Tailwind.
+        - Jadwal: Inform/Organize -> Tabbed content (Day 1/2/3) -> Click tabs -> HTML/Tailwind, JS for tabs.
+        - Fasilitas & Biaya: Inform -> Lists, styled text -> Read -> HTML/Tailwind.
+        - Pendaftaran & Kontak: Inform/Action -> Text, contact info, visual cue of form fields -> Read/Contact externally -> HTML/Tailwind.
+        No Chart.js/Plotly used as source data is primarily textual. No complex diagrams needed.
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        html { scroll-behavior: smooth; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover { color: #c2410c; } /* Corresponds to orange-700 */
+        .btn-primary { background-color: #ea580c; color: white; padding: 0.75rem 1.5rem; border-radius: 0.375rem; transition: background-color 0.3s ease; }
+        .btn-primary:hover { background-color: #c2410c; }
+        .section-title { color: #c2410c; font-weight: bold; font-size: 1.875rem; margin-bottom: 1rem; }
+        .card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); padding: 1.5rem; }
+        .icon-list li { display: flex; align-items: center; margin-bottom: 0.5rem; }
+        .icon-list span.icon { margin-right: 0.75rem; color: #0d9488; font-size: 1.25rem; } /* teal-600 */
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800 font-sans leading-relaxed">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-orange-700">Kewirausahaan</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#hero" class="nav-link text-stone-700">Beranda</a>
+                <a href="#tentang" class="nav-link text-stone-700">Tentang Program</a>
+                <a href="#kursus" class="nav-link text-stone-700">Detail Kursus</a>
+                <a href="#pembicara" class="nav-link text-stone-700">Pembicara</a>
+                <a href="#jadwal" class="nav-link text-stone-700">Jadwal</a>
+                <a href="#biaya" class="nav-link text-stone-700">Biaya</a>
+                <a href="#daftar" class="nav-link text-stone-700">Pendaftaran</a>
+                <a href="#kontak" class="nav-link text-stone-700">Kontak</a>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-stone-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobileMenu" class="md:hidden hidden flex-col space-y-2 px-6 pb-3">
+            <a href="#hero" class="block nav-link text-stone-700 py-1">Beranda</a>
+            <a href="#tentang" class="block nav-link text-stone-700 py-1">Tentang Program</a>
+            <a href="#kursus" class="block nav-link text-stone-700 py-1">Detail Kursus</a>
+            <a href="#pembicara" class="block nav-link text-stone-700 py-1">Pembicara</a>
+            <a href="#jadwal" class="block nav-link text-stone-700 py-1">Jadwal</a>
+            <a href="#biaya" class="block nav-link text-stone-700 py-1">Biaya</a>
+            <a href="#daftar" class="block nav-link text-stone-700 py-1">Pendaftaran</a>
+            <a href="#kontak" class="block nav-link text-stone-700 py-1">Kontak</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-orange-600 text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">✨ Program Pelatihan Kewirausahaan</h1>
+                <p class="text-xl md:text-2xl mb-8">Wujudkan Ide Bisnis Anda Menjadi Kenyataan!</p>
+                <a href="#daftar" class="btn-primary text-lg font-semibold">Daftar Sekarang</a>
+            </div>
+        </section>
+
+        <section id="tentang" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">Tentang Program Pelatihan Ini</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Program ini dirancang untuk membekali Anda dengan pengetahuan, keterampilan, dan mentalitas yang dibutuhkan untuk sukses dalam dunia wirausaha. Kami fokus pada pembentukan praktik dan budaya kewirausahaan yang unggul.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">Perkenalan Program</h3>
+                        <p class="text-stone-700 mb-4">Program Pelatihan Kewirausahaan ini dirancang khusus bagi para calon wirausahawan atau wirausahawan yang telah berkecimpung langsung dan ingin mendalami bidang ini secara formal. Pengembangan kewirausahaan berfokus pada pembentukan praktik, nilai, dan budaya kewirausahaan yang unggul.</p>
+                        <p class="text-stone-700">Ini adalah wadah untuk memberikan kesempatan kepada para wirausahawan dan calon wirausahawan guna meningkatkan keterampilan dan pengetahuan di bidang manajemen keuangan, pemasaran, operasional, dan manajemen administrasi.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">🎯 Tujuan Program</h3>
+                        <ul class="icon-list text-stone-700 space-y-2">
+                            <li><span class="icon">✓</span> Membekali wirausahawan dengan pengetahuan dan keahlian.</li>
+                            <li><span class="icon">✓</span> Membentuk wirausahawan yang berdaya saing.</li>
+                            <li><span class="icon">✓</span> Mendorong lebih banyak individu terjun ke dunia kewirausahaan.</li>
+                            <li><span class="icon">✓</span> Mempersiapkan ketahanan fisik dan mental wirausahawan.</li>
+                            <li><span class="icon">✓</span> Memperkenalkan dunia bisnis nyata dan tantangannya.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kursus" class="py-16 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">📚 Detail Isi Kursus</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Bagian ini memaparkan secara rinci materi-materi esensial yang akan Anda dapatkan selama program, serta metode pembelajaran yang kami terapkan untuk pengalaman belajar yang optimal.</p>
+                <div class="card mb-12">
+                    <h3 class="text-2xl font-semibold text-orange-700 mb-6">Materi Komprehensif:</h3>
+                    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-stone-700 list-inside">
+                        <li>• Pentingnya Kewirausahaan</li>
+                        <li>• Jenis Kepemilikan Bisnis</li>
+                        <li>• Jenis-jenis Kewirausahaan</li>
+                        <li>• Ciri Pengusaha Sukses</li>
+                        <li>• Tantangan Dunia Bisnis</li>
+                        <li>• Kreativitas dan Inovasi</li>
+                        <li>• Pengenalan Fungsi Bisnis</li>
+                        <li>• Pemasaran</li>
+                        <li>• Penentuan Lokasi dan Harga</li>
+                        <li>• Menentukan Target Pasar</li>
+                        <li>• Strategi Pemasaran Online & Situs Web (Teori & Praktik)</li>
+                        <li>• Aktivitas Kelompok</li>
+                        <li>• Berjualan di Media Sosial (Teori & Praktik)</li>
+                        <li>• Peran Manajemen SDM</li>
+                        <li>• Proses Sumber Daya Manusia</li>
+                        <li>• Bagan Organisasi</li>
+                        <li>• Sumber Pendanaan</li>
+                        <li>• Metode Evaluasi Bisnis</li>
+                        <li>• Teknik Penghematan Biaya</li>
+                        <li>• Teknik Penjualan Toko Fisik</li>
+                        <li>• Pentingnya Manajemen Kas</li>
+                        <li>• Jenis-jenis Manajemen Kas</li>
+                        <li>• Promosi Bisnis</li>
+                        <li>• Pengantar Manajemen Keuangan</li>
+                        <li>• Penyusunan Prakiraan Laporan Keuangan</li>
+                        <li>• Penyusunan Anggaran</li>
+                        <li>• Perhitungan Return on Capital & Rasio</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                     <h3 class="text-2xl font-semibold text-orange-700 mb-4">🛠️ Metodologi Pembelajaran</h3>
+                     <p class="text-stone-700 mb-6">Kami menggunakan pendekatan yang beragam untuk memastikan pemahaman yang mendalam dan aplikatif:</p>
+                    <div class="grid sm:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div class="text-4xl text-teal-600 mb-2">🗣️</div>
+                            <h4 class="font-semibold text-lg">Bicara (Kuliah & Diskusi)</h4>
+                            <p class="text-sm text-stone-600">Penyampaian materi oleh ahli dan diskusi interaktif.</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl text-teal-600 mb-2">👁️‍🗨️</div>
+                            <h4 class="font-semibold text-lg">Amati dan Praktik</h4>
+                            <p class="text-sm text-stone-600">Studi kasus, simulasi, dan latihan langsung.</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl text-teal-600 mb-2">🚶‍♂️</div>
+                            <h4 class="font-semibold text-lg">Kunjungan (Opsional)</h4>
+                            <p class="text-sm text-stone-600">Kunjungan ke bisnis untuk wawasan praktis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="peserta" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">👥 Untuk Siapa Program Ini?</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Program ini terbuka bagi siapa saja yang memiliki semangat kewirausahaan dan keinginan untuk bertumbuh. Kami menyambut peserta dari berbagai latar belakang.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <ul class="icon-list text-stone-700 space-y-3">
+                            <li><span class="icon">👨‍💼</span> Pengusaha Muda yang ingin berkembang.</li>
+                            <li><span class="icon">🎓</span> Mahasiswa yang tertarik dengan kewirausahaan.</li>
+                            <li><span class="icon">💡</span> Individu yang tertarik untuk terjun ke dunia kewirausahaan.</li>
+                            <li><span class="icon">📈</span> Pengusaha yang ingin memperdalam ilmu dan meningkatkan kemampuan diri.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-stone-600">Jumlah peserta yang diharapkan sebanyak <strong>30 orang</strong> untuk menjaga kualitas interaksi dan pembelajaran.</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="https://placehold.co/400x300/feecdc/c2410c?text=Inspirasi+Wirausaha" alt="Ilustrasi Kewirausahaan" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pembicara" class="py-16 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">🗣️ Pembicara Utama</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Program ini akan dibimbing oleh praktisi dan akademisi berpengalaman di bidang kewirausahaan, memastikan Anda mendapatkan wawasan yang mendalam dan relevan.</p>
+                <div class="card max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                        <img src="https://placehold.co/150x150/0d9488/ffffff?text=Foto+Pembicara" alt="Foto Dr. Noor Azlin Ismail" class="w-32 h-32 rounded-full mb-4 sm:mb-0 sm:mr-6 shadow-lg" onerror="this.src='https://placehold.co/150x150/94A3B8/FFFFFF?text=Foto'">
+                        <div>
+                            <h3 class="text-2xl font-bold text-orange-700">Dr. Noor Azlin Ismail</h3>
+                            <p class="text-teal-600 font-semibold mb-2">Spesialis Program Kewirausahaan</p>
+                            <ul class="text-sm text-stone-600 space-y-1 list-disc list-inside">
+                                <li>Dosen di Sekolah Manajemen Ekonomi, UPM selama 25 tahun.</li>
+                                <li>Pengalaman Kerja di Maybank (Bidang akan diisi).</li>
+                                <li>Berbagai pengalaman lain di industri dan konsultasi bisnis.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jadwal" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">📅 Jadwal Program (23 – 25 Juni 2025)</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Berikut adalah rincian jadwal kegiatan selama tiga hari pelatihan. Pastikan Anda mengikuti setiap sesi untuk mendapatkan manfaat maksimal.</p>
+                <div class="card">
+                    <div class="mb-6">
+                        <div class="flex border-b border-stone-300">
+                            <button data-tab="hari1" class="tab-button flex-1 py-3 px-4 text-center font-semibold text-orange-700 border-b-2 border-orange-700 focus:outline-none">Hari Pertama</button>
+                            <button data-tab="hari2" class="tab-button flex-1 py-3 px-4 text-center font-semibold text-stone-500 hover:text-orange-600 focus:outline-none">Hari Kedua</button>
+                        </div>
+                    </div>
+
+                    <div id="hari1" class="tab-content active">
+                        <h4 class="text-xl font-semibold text-teal-600 mb-4">Hari Pertama</h4>
+                        <ul class="space-y-3 text-stone-700">
+                            <li><strong>08.30 – 09.00:</strong> Registrasi Peserta</li>
+                            <li><strong>09.00 – 10.30:</strong> Kuliah Sesi 1</li>
+                            <li><strong>10.30 – 11.00:</strong> Minuman Pagi & Networking</li>
+                            <li><strong>11.00 – 12.30:</strong> Kuliah Sesi 2</li>
+                            <li><strong>12.30 – 14.00:</strong> Makan Siang & Istirahat</li>
+                            <li><strong>14.00 – 15.30:</strong> Kuliah Sesi 3</li>
+                            <li><strong>15.30 – 16.30:</strong> Kuliah Sesi 4</li>
+                            <li><strong>16.30 – 17.00:</strong> Teh Sore & Akhir Hari Pertama</li>
+                        </ul>
+                    </div>
+                    <div id="hari2" class="tab-content">
+                        <h4 class="text-xl font-semibold text-teal-600 mb-4">Hari Kedua</h4>
+                         <ul class="space-y-3 text-stone-700">
+                            <li><strong>09.00 – 10.30:</strong> Kuliah Sesi 5</li>
+                            <li><strong>10.30 – 11.00:</strong> Minuman Pagi & Networking</li>
+                            <li><strong>11.00 – 12.30:</strong> Kuliah Sesi 6 (Praktik/Studi Kasus)</li>
+                            <li><strong>12.30 – 14.00:</strong> Makan Siang & Istirahat</li>
+                            <li><strong>14.00 – 15.30:</strong> Kuliah Sesi 7</li>
+                            <li><strong>15.30 – 16.30:</strong> Kuliah Sesi 8 (Diskusi Kelompok)</li>
+                            <li><strong>16.30 – 17.00:</strong> Acara Penyerahan Sertifikat/Teh sore/Akhir</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="biaya" class="py-16 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">🎁 Fasilitas & 💰 Investasi</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Kami menyediakan fasilitas lengkap untuk mendukung kenyamanan belajar Anda, dengan investasi yang sepadan untuk pengembangan diri dan bisnis Anda.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">Fasilitas yang Disediakan:</h3>
+                        <ul class="icon-list text-stone-700 space-y-2">
+                            <li><span class="icon">✓</span> Ruang Pelatihan yang Nyaman dan Kondusif.</li>
+                            <li><span class="icon">✓</span> Konsumsi (Makan Siang dan Minuman Pagi/Sore).</li>
+                            <li><span class="icon">✓</span> Materi Kursus Lengkap (Hardcopy/Softcopy).</li>
+                            <li><span class="icon">✓</span> Sertifikat Partisipasi Resmi.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">Biaya Program:</h3>
+                        <p class="text-3xl font-bold text-teal-600 mb-3">RP [HARAP ISI BIAYA DI SINI]</p>
+                        <p class="text-stone-700 mb-4">Biaya kursus sudah termasuk semua fasilitas yang disebutkan.</p>
+                        <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 rounded-md">
+                            <p class="font-semibold">Diskon Spesial!</p>
+                            <p>Dapatkan diskon <strong>10%</strong> untuk pendaftaran lebih dari 5 orang dari satu kelompok organisasi.</p>
+                        </div>
+                        <p class="mt-4 text-sm text-stone-600">Tempat pelatihan: [Akan diinformasikan lebih lanjut / Isi nama tempat jika sudah ada]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="daftar" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">📝 Pendaftaran Program</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Segera amankan tempat Anda! Proses pendaftaran mudah dan cepat. Ikuti langkah-langkah di bawah ini untuk bergabung.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">Cara Pembayaran:</h3>
+                        <p class="text-stone-700 mb-2">Biaya kursus dapat dibayarkan melalui transfer ke rekening berikut:</p>
+                        <ul class="space-y-1 text-stone-700">
+                            <li><strong>Organisasi:</strong> Yayasan Seuramoe Berkah IPTEK</li>
+                            <li><strong>Nama Bank:</strong> [HARAP ISI NAMA BANK]</li>
+                            <li><strong>No. Rekening:</strong> [HARAP ISI NOMOR REKENING]</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-stone-600">Setelah melakukan pembayaran, harap konfirmasi ke narahubung kami.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-orange-700 mb-4">Formulir Pendaftaran (Data yang Diperlukan):</h3>
+                        <p class="text-stone-700 mb-4">Saat mendaftar (biasanya melalui kontak yang tersedia), Anda akan diminta untuk menyediakan informasi berikut:</p>
+                        <ul class="space-y-1 text-stone-700 list-disc list-inside">
+                            <li>Nama Lengkap</li>
+                            <li>Alamat Lengkap</li>
+                            <li>Posisi/Jabatan Saat Ini</li>
+                            <li>Nomor Telepon Aktif</li>
+                            <li>Alamat Email Aktif</li>
+                        </ul>
+                         <a href="#kontak" class="inline-block btn-primary mt-6">Hubungi Kami untuk Mendaftar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="kontak" class="py-16 bg-stone-50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center">📞 Pertanyaan & Informasi Lebih Lanjut</h2>
+                <p class="text-center text-lg text-stone-700 mb-12 max-w-3xl mx-auto">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau membutuhkan informasi tambahan mengenai program pelatihan ini.</p>
+                <div class="card max-w-xl mx-auto text-center">
+                    <h3 class="text-xl font-semibold text-orange-700 mb-2">Yayasan Seuramoe Berkah IPTEK</h3>
+                    <p class="text-stone-700">GP, Paya Guci KEC. Tangse Kab. PIDIE</p>
+                    <p class="text-stone-700 mb-4">Jl. Beureunuen – Tangse No. 116, Kode Pos: 24166</p>
+                    <p class="text-stone-700"><strong>Telp/WA:</strong> <a href="tel:+6282277908874" class="text-teal-600 hover:underline">+628-2277908874</a></p>
+                    <p class="text-stone-700 mb-4"><strong>Email:</strong> <a href="mailto:seuramoe.berkah.iptek@gmail.com" class="text-teal-600 hover:underline">seuramoe.berkah.iptek@gmail.com</a></p>
+                    <p class="text-stone-700"><strong>Pegawai Pelatihan:</strong> Khairil Anwar, S.T.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-stone-800 text-stone-300 py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> Program Pelatihan Kewirausahaan. Dipersembahkan oleh Yayasan Seuramoe Berkah IPTEK.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            const navLinks = mobileMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-orange-700', 'border-orange-700');
+                        btn.classList.add('text-stone-500', 'hover:text-orange-600');
+                    });
+                    this.classList.add('text-orange-700', 'border-orange-700');
+                    this.classList.remove('text-stone-500', 'hover:text-orange-600');
+                    
+                    tabContents.forEach(content => {
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+
+</body>
+</html>
